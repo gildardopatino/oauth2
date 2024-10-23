@@ -8,4 +8,7 @@ router.get('/auth/google/callback', authController.googleAuthCallback, authContr
 router.get('/auth/facebook', authController.facebookAuth); //mostrar la pantalla de Autorizar y Denegar de Facebook
 router.get('/auth/facebook/callback', authController.facebookAuthCallback, authController.redirectHome);
 
+router.get('/profile', authController.getProfile);
+router.get('/logout', authController.logout);
+
 module.exports = router;
