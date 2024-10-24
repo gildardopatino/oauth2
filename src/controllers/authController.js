@@ -18,6 +18,7 @@ exports.getProfile = (req, res) => {
     res.json(req.user);
 }
 
+
 exports.logout = (req, res) => {
     req.logout((err) => {
         if(err){
