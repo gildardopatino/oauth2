@@ -3,8 +3,10 @@ const express = require('express');
 const session = require('express-session');
 const passport = require('./config/passportConfig');
 const authRoutes = require('./routes/authRoutes');
+const mercadopagoRoutes = require('./routes/mercadopagoRoutes');
 const cors = require('cors');
 const app = express();
+
 app.use(cors({
     origin: 'http://localhost:5173',
     credentials:true
@@ -15,10 +17,11 @@ app.use(session({
     saveUninitialized:true
 }));
 
-
+app.use(express.json());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(authRoutes);
+app.use(mercadopagoRoutes);
 
 app.listen(process.env.PORT, () => {
     console.log("Aplicacion corriendo por el puerto 3000");
