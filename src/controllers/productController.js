@@ -15,12 +15,12 @@ client.connect();
 exports.getProducts = async (req, res, next) => {
     try {
         //throw new Error('Opss!, registraste mal el tipo de producto');
-        const cachedProducts = await client.get('products');
+        //const cachedProducts = await client.get('products');
         
-        if (cachedProducts) {
-            logger.info('Realice la consulta de productos cacheados');
-            return res.json(JSON.parse(cachedProducts));
-        }
+        //if (cachedProducts) {
+        //    logger.info('Realice la consulta de productos cacheados');
+        //    return res.json(JSON.parse(cachedProducts));
+        //}
         const products = await Product.find({}, '-id -updatedAt');
 
         //const users = await User.find();
@@ -30,7 +30,7 @@ exports.getProducts = async (req, res, next) => {
             Product.find(),
             User.find()
         ]);*/
-        await client.setEx('products', 3600, JSON.stringify(products));
+        //await client.setEx('products', 3600, JSON.stringify(products));
         logger.info('Realice la consulta de productos y almacenamiento en redis');
         
         res.json(products);

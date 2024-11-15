@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/server.js",
-    "pm2": "pm2 start src/server.js --name oauth2"
+    "pm2": "pm2 start src/server.js --name oauth2",
+    "start": "node src/server.js"
   },
   "keywords": [],
   "author": "",
